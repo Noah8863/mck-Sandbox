@@ -4,39 +4,32 @@
   padding: 2rem;
   text-align: center;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.table-row:nth-child(even) {
+  background-color: #dfe0e0; /* Light grey background */
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.table-headings {
+  color: rgb(10, 105, 220);
+  padding: 10px;
+  display: "inline-block";
+  vertical-align: "middle";
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.btn {
+  color: rgb(16, 97, 196);
+  border: "none";
+  display: inline-block;
+  vertical-align: middle;
+  border: none;
+  background: none;
+  padding: 5;
+  outline: none;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn:focus {
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Example of a custom focus style */
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.btn:hover {
+  background-color:rgb(237, 235, 235);
 }
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.table-el {
+  border-top: 1px solid black;
+  padding: 10px;
 }
