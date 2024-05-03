@@ -11,36 +11,36 @@ function App() {
 
   return (
     <table
-      style={{ border: "1px solid black", width: "100%", textAlign: "left" }}
+      style={{ borderTop: "1px solid black", borderBottom: "1px solid black", width: "100%", textAlign: "left" }}
     >
       <thead>
         <tr>
           <th className="table-headings">
-            Name
+            NAME
             <ArrowDropDownIcon
               style={{ display: "inline-block", verticalAlign: "middle" }}
             />
           </th>
           <th className="table-headings">
-            Type
+            TYPE
             <ArrowDropDownIcon
               style={{ display: "inline-block", verticalAlign: "middle" }}
             />
           </th>
           <th className="table-headings">
-            Created By
+            CREATED BY
             <ArrowDropDownIcon
               style={{ display: "inline-block", verticalAlign: "middle" }}
             />
           </th>
           <th className="table-headings">
-            Modified By
+            MODIFIED BY
             <ArrowDropDownIcon
               style={{ display: "inline-block", verticalAlign: "middle" }}
             />
           </th>
           <th className="table-headings">
-            Last Modified
+            LAST MODIFIED
             <ArrowDropDownIcon
               style={{ display: "inline-block", verticalAlign: "middle" }}
             />
@@ -51,7 +51,7 @@ function App() {
         {data.Reports.map((report, index) => (
           <tr key={index} className="table-row">
             <td className="table-el">
-              <a>{report.name}</a>
+              <a style={{color:"blue"}}>{report.name}</a>
             </td>
             <td className="table-el">{report.type}</td>
             <td className="table-el">{report.created_by}</td>

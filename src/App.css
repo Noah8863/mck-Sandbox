@@ -5,11 +5,11 @@
   text-align: center;
 }
 .table-row:nth-child(even) {
-  background-color: #dfe0e0; /* Light grey background */
+  background-color: rgb(238,238,238); 
 }
 .table-headings {
   color: rgb(10, 105, 220);
-  padding: 10px;
+  padding: 10px 20px 10px 20px;
   display: "inline-block";
   vertical-align: "middle";
 }
@@ -24,7 +24,7 @@
   outline: none;
 }
 .btn:focus {
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Example of a custom focus style */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); 
 }
 .btn:hover {
   background-color:rgb(237, 235, 235);
