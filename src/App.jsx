@@ -136,7 +136,7 @@ function App() {
         {data.Reports.map((report, index) => (
           <tr key={index} className="table-row">
             <td className="table-el">
-              <a style={{ color: "blue" }}>{report.name}</a>
+              <a>{report.name}</a>
             </td>
             <td className="table-el">{report.type}</td>
             <td className="table-el">{report.created_by}</td>
@@ -149,26 +149,16 @@ function App() {
                   style={{
                     display: "inline-block",
                     verticalAlign: "middle",
-                    color: "blue",
                   }}
                   onClick={() => toggleDropdown(index)}
                 >
                   Actions
-                  {openDropdownIndex === index ? (
                     <KeyboardArrowUpIcon
                       style={{
                         display: "inline-block",
                         verticalAlign: "middle",
                       }}
                     />
-                  ) : (
-                    <KeyboardArrowDownIcon
-                      style={{
-                        display: "inline-block",
-                        verticalAlign: "middle",
-                      }}
-                    />
-                  )}
                 </button>
                 {openDropdownIndex === index && (
                   <div className="dropdown-content">

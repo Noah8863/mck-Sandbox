@@ -2,38 +2,43 @@
   background-color: rgb(238, 238, 238);
 }
 .access-table-el {
+
   border-bottom: 1px solid rgb(142, 142, 142);
-  width: 100vw;
+  width: 100%;
 }
-.dropdown-content {
+.access-dropdown-content {
   display: block;
   position: absolute;
   background-color: rgb(255, 255, 255);
-  border-width: 2px;
+  border-width: 5px;
   border-color: black;
-  min-width: 160px;
+  width: fit-content;
   box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
-
-.dropdown-content a {
+.edit-btn {
+    position: relative;
+    display: inline-block;
+    width: max-content;
+}
+.access-dropdown-content a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
   border-width: 2px;
   border-color: black;
-  text-align: center;
+  text-align: left;
 }
 
-.dropdown-content a:hover {
-  background-color: #d4d4d4;
+.access-dropdown-content a:hover {
+  background-color: #cbecfc;
 }
 
 .accessActionBtn {
   background: none;
   border: none;
-  color: rgb(94, 255, 0);
+  color: rgb(43, 144, 212);
   cursor: pointer;
   display: inline-block;
   vertical-align: middle;

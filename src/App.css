@@ -8,7 +8,7 @@
   background-color: rgb(238,238,238); 
 }
 .table-headings {
-  color: rgb(10, 105, 220);
+  color: rgb(43, 144, 212);
   padding: 10px 20px 10px 20px;
   display: "inline-block";
   vertical-align: "middle";
@@ -32,6 +32,9 @@
 .table-el {
   border-top: 1px solid rgb(142, 142, 142);
   padding: 10px;
+}
+.table-el a{
+  color: rgb(43, 144, 212);
 }
 
 /* Dropdown Menu Styles */
@@ -63,7 +66,7 @@
 .actionBtn {
   background: none;
   border: none;
-  color: blue;
+  color: rgb(43, 144, 212);
   cursor: pointer;
   display: inline-block;
   vertical-align: middle;

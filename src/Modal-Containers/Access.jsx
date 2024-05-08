@@ -1,6 +1,6 @@
 import { useState } from "react";
 import data from "../../data/data.json";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PersonIcon from "@mui/icons-material/Person";
 import PropTypes from "prop-types";
@@ -68,50 +68,83 @@ export default function Access() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <div style={{ padding: "10px"}}>
+        <div style={{ padding: "10px" }}>
           <tbody>
             {data.Reports.map((report, index) => (
               <tr key={index} className="table-row">
                 <td className="access-table-el">
                   <PersonIcon></PersonIcon>
-                  <a style={{ color: "blue" }}>{report.name}</a>
+                  <a style={{ marginLeft: 10 }}>{report.user}</a>
                 </td>
 
                 <td className="access-table-el">
-                  <div style={{ position: "relative" }}>
+                  
                     <button
-                      className="accessActionBtn"
-                      style={{
-                        display: "inline-block",
-                        verticalAlign: "middle",
-                        color: "blue",
-                      }}
+                      className="accessActionBtn edit-btn"
                       onClick={() => toggleDropdown(index)}
                     >
                       Can edit
-                      {openDropdownIndex === index ? (
-                        <KeyboardArrowUpIcon
-                          style={{
-                            display: "inline-block",
-                            verticalAlign: "middle",
-                          }}
-                        />
-                      ) : (
-                        <KeyboardArrowDownIcon
-                          style={{
-                            display: "inline-block",
-                            verticalAlign: "middle",
-                          }}
-                        />
-                      )}
+                      <KeyboardArrowUpIcon
+                        style={{
+                          display: "inline-block",
+                          verticalAlign: "middle",
+                        }}
+                      />
                     </button>
                     {openDropdownIndex === index && (
-                      <div className="dropdown-content">
+                      <div className="access-dropdown-content">
                         {[
                           "Can view",
                           "Can Edit",
                           "Edit including folder settings",
-                          
+                        ].map((option, optIndex) => (
+                          <a
+                            key={optIndex}
+                            href="#"
+                            onClick={() => handleSelect(option, report.user)}
+                          >
+                            {option}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </div>
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
+      <div style={{ padding: "10px" }}>
+          <tbody>
+            {data.Reports.map((report, index) => (
+              <tr key={index} className="table-row">
+                <td className="access-table-el">
+                  <PersonIcon></PersonIcon>
+                  <a style={{ marginLeft: 10 }}>{report.created_by}</a>
+                </td>
+
+                <td className="access-table-el ">
+                  <div style={{ position: "relative" }}>
+                    <button
+                      className="accessActionBtn edit-btn"
+                      onClick={() => toggleDropdown(index)}
+                    >
+                      Can edit
+                      <KeyboardArrowUpIcon
+                        style={{
+                          display: "inline-block",
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </button>
+                    {openDropdownIndex === index && (
+                      <div className="access-dropdown-content">
+                        {[
+                          "Can view",
+                          "Can Edit",
+                          "Edit including folder settings",
                         ].map((option, optIndex) => (
                           <a
                             key={optIndex}
@@ -129,9 +162,6 @@ export default function Access() {
             ))}
           </tbody>
         </div>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        Item Two
       </CustomTabPanel>
     </Box>
   );
