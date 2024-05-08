@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import data from "../data/data.json";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Modal from "./Modal/modal";
 import ReName from "./Modal-Containers/ReName"
 import Access from "./Modal-Containers/Access"
@@ -14,7 +14,7 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [buttonText, setButtonText] = useState('Save');
-  const [headerText, setHeaderText] = useState('Edit Report');
+  const [headerText, setHeaderText] = useState('Edit');
 
   const toggleDropdown = (index) => {
     setOpenDropdownIndex(index === openDropdownIndex ? null : index);
@@ -48,37 +48,40 @@ function App() {
       <Create />
     )
     setButtonText('Save');
-    setHeaderText('Manage Access Options')
+    setHeaderText('Create Folder')
     setIsModalOpen(true);
   };
 
-  const handleOpenDelete = () => {
+  const handleOpenDelete = (name) => {
     setModalContent(
-      <Delete />
+      <Delete name={name}
+      onConfirm={() => {
+        //Delete logic will go here
+        setIsModalOpen(false)
+      }} 
+      />
     )
     setButtonText('Save');
     setHeaderText('Confirm delete?')
     setIsModalOpen(true);
   };
 
-  const handleSelect = (option) => {
-    if (option === "Rename") {
-      setIsModalOpen(true); 
-      handleOpenReName()
+  const handleSelect = (option, name) => {
+    switch (option) {
+      case "Rename":
+        handleOpenReName();
+        break;
+      case "Manage Access Options":
+        handleOpenAccess();
+        break;
+      case "Create Folder":
+        handleOpenCreate();
+        break;
+      case "Delete":
+        handleOpenDelete(name);
+        break;
     }
-    if (option === "Manage Access Options") {
-      setIsModalOpen(true); 
-      handleOpenAccess()
-    }
-    if (option === "Create Folder") {
-      setIsModalOpen(true); 
-      handleOpenCreate()
-    }
-    if (option === "Delete") {
-      setIsModalOpen(true); 
-      handleOpenDelete()
-    }
-    setOpenDropdownIndex(null); 
+    setOpenDropdownIndex(null);
   };
 
   const handleCloseModal = () => {
@@ -99,31 +102,31 @@ function App() {
         <tr>
           <th className="table-headings">
             NAME
-            <ArrowDropDownIcon
+            <KeyboardArrowDownIcon
               style={{ display: "inline-block", verticalAlign: "middle" }}
             />
           </th>
           <th className="table-headings">
             TYPE
-            <ArrowDropDownIcon
+            <KeyboardArrowDownIcon
               style={{ display: "inline-block", verticalAlign: "middle" }}
             />
           </th>
           <th className="table-headings">
             CREATED BY
-            <ArrowDropDownIcon
+            <KeyboardArrowDownIcon
               style={{ display: "inline-block", verticalAlign: "middle" }}
             />
           </th>
           <th className="table-headings">
             MODIFIED BY
-            <ArrowDropDownIcon
+            <KeyboardArrowDownIcon
               style={{ display: "inline-block", verticalAlign: "middle" }}
             />
           </th>
           <th className="table-headings">
             LAST MODIFIED
-            <ArrowDropDownIcon
+            <KeyboardArrowDownIcon
               style={{ display: "inline-block", verticalAlign: "middle" }}
             />
           </th>
@@ -159,7 +162,7 @@ function App() {
                       }}
                     />
                   ) : (
-                    <ArrowDropDownIcon
+                    <KeyboardArrowDownIcon
                       style={{
                         display: "inline-block",
                         verticalAlign: "middle",
@@ -174,7 +177,7 @@ function App() {
                         <a
                           key={optIndex}
                           href="#"
-                          onClick={() => handleSelect(option)}
+                          onClick={() => handleSelect(option, report.name)}
                         >
                           {option}
                         </a>
