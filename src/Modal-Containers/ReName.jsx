@@ -19,11 +19,10 @@ function ReName({ onConfirm }) {
         e.preventDefault();
         onConfirm(name, description);
       }}>
-        <div style={{ marginBottom: '10px' }}>
-          
+        <div style={{ marginBottom: '10px', backgroundColor:"lightgray" }}>
           <TextField fullWidth id="outlined-basic" label="Name" type="text" value={name} variant="outlined" onChange={handleNameChange} />
         </div>
-        <div style={{ marginBottom: '10px' }}>
+        <div style={{ marginBottom: '10px', backgroundColor:"lightgray" }}>
         <TextField
         fullWidth
           id="outlined-multiline-static"
