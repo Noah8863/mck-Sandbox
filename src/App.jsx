@@ -4,31 +4,81 @@ import data from "../data/data.json";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Modal from "./Modal/modal";
+import ReName from "./Modal-Containers/ReName"
+import Access from "./Modal-Containers/Access"
+import Create from "./Modal-Containers/Create"
+import Delete from "./Modal-Containers/Delete"
 
 function App() {
   const [openDropdownIndex, setOpenDropdownIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [text, setText] = useState("")
+  const [modalContent, setModalContent] = useState(null);
+  const [buttonText, setButtonText] = useState('Save');
+  const [headerText, setHeaderText] = useState('Edit Report');
 
   const toggleDropdown = (index) => {
     setOpenDropdownIndex(index === openDropdownIndex ? null : index);
   };
 
+  const handleOpenReName = () => {
+    setModalContent(
+      <ReName onConfirm={(name, description) => {
+        console.log('Name:', name, 'Description:', description);
+        setIsModalOpen(false);
+      }} />
+    );
+    setButtonText('Create');
+    setHeaderText('Rename Report')
+    setIsModalOpen(true);
+  };
+
+  const handleOpenAccess = () => {
+    setModalContent(
+      <Access onConfirm={(name, description) => {
+        setIsModalOpen(false);
+      }} />
+    );
+    setButtonText('Save');
+    setHeaderText('Manage Access Options')
+    setIsModalOpen(true);
+  };
+
+  const handleOpenCreate = () => {
+    setModalContent(
+      <Create />
+    )
+    setButtonText('Save');
+    setHeaderText('Manage Access Options')
+    setIsModalOpen(true);
+  };
+
+  const handleOpenDelete = () => {
+    setModalContent(
+      <Delete />
+    )
+    setButtonText('Save');
+    setHeaderText('Confirm delete?')
+    setIsModalOpen(true);
+  };
+
   const handleSelect = (option) => {
-    console.log(`Selected option: ${option}`);
-    if (option === "Re-Name") {
-      setIsModalOpen(true); // Open the modal when "Share" is selected
-      setText("This is passed down RE-NAME text")
+    if (option === "Rename") {
+      setIsModalOpen(true); 
+      handleOpenReName()
     }
-    if (option === "Share") {
-      setIsModalOpen(true); // Open the modal when "Share" is selected
-      setText("This is passed down SHARE text")
+    if (option === "Manage Access Options") {
+      setIsModalOpen(true); 
+      handleOpenAccess()
     }
-    if (option === "Copy") {
-      setIsModalOpen(true); // Open the modal when "Share" is selected
-      setText("This is passed down COPY text")
+    if (option === "Create Folder") {
+      setIsModalOpen(true); 
+      handleOpenCreate()
     }
-    setOpenDropdownIndex(null); // Close the dropdown after selection
+    if (option === "Delete") {
+      setIsModalOpen(true); 
+      handleOpenDelete()
+    }
+    setOpenDropdownIndex(null); 
   };
 
   const handleCloseModal = () => {
@@ -119,7 +169,7 @@ function App() {
                 </button>
                 {openDropdownIndex === index && (
                   <div className="dropdown-content">
-                    {["Re-Name", "Share", "Copy"].map(
+                    {["Rename", "Manage Access Options", "Create Folder", "Delete"].map(
                       (option, optIndex) => (
                         <a
                           key={optIndex}
@@ -138,7 +188,7 @@ function App() {
         ))}
       </tbody>
     </table>
-    <Modal open={isModalOpen} onClose={handleCloseModal} text={text} />
+    <Modal open={isModalOpen} onClose={handleCloseModal} handleCloseModal={handleCloseModal} buttonText={buttonText} headerText={headerText}>{modalContent}</Modal>
     </>
   );
 }
